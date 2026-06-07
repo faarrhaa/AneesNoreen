@@ -275,17 +275,6 @@ body{
 }
 .save-date-btn:hover{background:var(--gold);color:var(--ivory);}
 
-.maps-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  margin-top:14px;padding:14px 36px;
-  font-family:'Cinzel',serif;font-size:14px;letter-spacing:2px;
-  background:var(--gold);color:var(--ivory);
-  border:none;border-radius:4px;cursor:pointer;
-  transition:all .3s;text-decoration:none;font-weight:600;
-  box-shadow:0 4px 20px rgba(184,134,11,.3);
-}
-.maps-btn:hover{background:var(--gold2);transform:translateY(-2px);}
-
 .closing-section{padding:72px 24px;text-align:center;position:relative;overflow:hidden;}
 
 #cinematic-ending{
@@ -303,8 +292,128 @@ body{
 }
 #cinematic-ending.revealed .ending-quote{opacity:1;transform:translateY(0);}
 
+/* ── VENUE CARD (Social Media Style) ── */
+.venue-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 40px auto;
+  max-width: 440px;
+  min-height: 580px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.venue-card-bg {
+  position: absolute;
+  inset: 0;
+  background: url('hilton.avif') center center / cover no-repeat;
+  z-index: 0;
+  transition: transform 5s ease;
+}
+.venue-card:hover .venue-card-bg {
+  transform: scale(1.05);
+}
+.venue-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+}
+.venue-card-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 24px;
+  color: white;
+}
+.venue-top-text {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  opacity: 0.9;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+.venue-bottom-details {
+  text-align: center;
+}
+.venue-bottom-details h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(22px, 5vw, 30px);
+  color: white;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  letter-spacing: 3px;
+}
+.venue-location-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 4px;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.venue-gardens {
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 28px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.get-directions-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1.5px solid white;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  transition: all 0.3s;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.get-directions-btn:hover {
+  background: white;
+  color: black;
+  text-shadow: none;
+}
+.venue-footer {
+  margin-top: 35px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  opacity: 0.8;
+}
+.social-icons {
+  display: flex;
+  gap: 18px;
+  font-size: 18px;
+}
+.website-link {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
 @media(max-width:600px){
   .ornament-border{padding:36px 18px;}
+  .venue-card { min-height: 520px; }
+  .venue-card-content { min-height: 520px; }
 }
 </style>
 </head>
@@ -499,22 +608,35 @@ body{
 
   <div class="gold-divider"></div>
 
-  <!-- ═══ VENUE ═══ -->
-  <section class="reveal-section" style="text-align:center;padding:56px 24px;position:relative;overflow:hidden;border-radius:12px;margin:10px 0;">
-    <div style="position:absolute;inset:0;background:url('hilton.avif') center center / cover no-repeat;z-index:0;"></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(253,248,238,0.88), rgba(253,248,238,0.92));z-index:1;"></div>
-    
-    <div style="position:relative;z-index:2;">
-      <div class="reveal-child reveal-delay-1" style="font-size:40px;color:var(--gold);margin-bottom:14px;line-height:1;">❦</div>
-      <p class="reveal-child reveal-delay-1 tagline" style="color:var(--gold);margin-bottom:10px;">Our Celebration Venue</p>
-      <h2 class="reveal-child reveal-delay-2" style="font-family:'Cinzel',serif;font-size:clamp(18px,4vw,28px);color:var(--dark);letter-spacing:3px;margin-bottom:6px;">HILTON KINGS RANCH, ALEXANDRIA</h2>
-      <p class="reveal-child reveal-delay-2" style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:4px;margin-bottom:4px;">ALEXANDRIA, EGYPT</p>
-      <p class="reveal-child reveal-delay-3" style="font-style:italic;font-size:clamp(15px,2.5vw,18px);color:var(--brown);margin-bottom:8px;">The Regal Pavilion &amp; Gardens</p>
-      <div class="reveal-child reveal-delay-3" style="width:60px;height:1px;background:var(--gold2);margin:16px auto;"></div>
-      <div class="reveal-child reveal-delay-4">
-        <a class="maps-btn" href="https://maps.google.com/?q=Hilton+Kings+Ranch+Alexandria+Egypt" target="_blank" rel="noopener">
-          📍 &nbsp; Open in Google Maps
-        </a>
+  <!-- ═══ VENUE (Social Media Card Style) ═══ -->
+  <section class="reveal-section" style="padding:56px 0;">
+    <div class="reveal-child reveal-delay-1 venue-card">
+      <div class="venue-card-bg"></div>
+      <div class="venue-card-overlay"></div>
+      
+      <div class="venue-card-content">
+        <div class="venue-top-text">
+          Every second brings us closer to forever ❤️
+        </div>
+        
+        <div class="venue-bottom-details">
+          <h2>HILTON KINGS RANCH, ALEXANDRIA</h2>
+          <p class="venue-location-sub">ALEXANDRIA, EGYPT</p>
+          <p class="venue-gardens">The Regal Pavilion & Gardens</p>
+          
+          <a class="get-directions-btn" href="https://maps.google.com/?q=Hilton+Kings+Ranch+Alexandria+Egypt" target="_blank" rel="noopener">
+            GET DIRECTIONS
+          </a>
+          
+          <div class="venue-footer">
+            <div class="social-icons">
+              <span>❤️</span>
+              <span>💬</span>
+              <span>📤</span>
+            </div>
+            <div class="website-link">faarrhaa.github.io</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
