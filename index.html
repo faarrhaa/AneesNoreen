@@ -292,128 +292,126 @@ body{
 }
 #cinematic-ending.revealed .ending-quote{opacity:1;transform:translateY(0);}
 
-/* ── VENUE CARD (Social Media Style) ── */
-.venue-card {
+/* ── VENUE HERO (Cinematic Full-Width Style) ── */
+.venue-hero {
   position: relative;
-  border-radius: 20px;
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  min-height: 520px;
   overflow: hidden;
-  margin: 40px auto;
-  max-width: 440px;
-  min-height: 580px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 }
-.venue-card-bg {
+.venue-hero-bg {
   position: absolute;
   inset: 0;
   background: url('hilton.avif') center center / cover no-repeat;
   z-index: 0;
-  transition: transform 5s ease;
+  transition: transform 8s ease;
 }
-.venue-card:hover .venue-card-bg {
-  transform: scale(1.05);
+.venue-hero:hover .venue-hero-bg {
+  transform: scale(1.04);
 }
-.venue-card-overlay {
+.venue-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 20, 50, 0.45) 0%,
+    rgba(40, 25, 60, 0.55) 50%,
+    rgba(30, 20, 50, 0.55) 100%
+  );
   z-index: 1;
 }
-.venue-card-content {
-  position: relative;
+.venue-hero-petals {
+  position: absolute;
+  inset: 0;
   z-index: 2;
-  height: 100%;
-  min-height: 580px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 32px 24px;
-  color: white;
+  pointer-events: none;
+  overflow: hidden;
 }
-.venue-top-text {
+.venue-hero-content {
+  position: relative;
+  z-index: 3;
   text-align: center;
+  padding: 80px 32px;
+  color: white;
+  width: 100%;
+}
+.venue-hero-tagline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(9px, 2vw, 12px);
+  letter-spacing: clamp(4px, 2vw, 10px);
+  color: rgba(212, 168, 67, 0.95);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+.venue-hero-divider {
+  width: 50px;
+  height: 1px;
+  background: rgba(212, 168, 67, 0.7);
+  margin: 0 auto 20px;
+}
+.venue-hero-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(22px, 5vw, 38px);
+  font-weight: 700;
+  color: white;
+  letter-spacing: clamp(2px, 1.5vw, 5px);
+  text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+.venue-hero-location {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 18px;
-  opacity: 0.9;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  margin-bottom: 20px;
-}
-.venue-bottom-details {
-  text-align: center;
-}
-.venue-bottom-details h2 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(22px, 5vw, 30px);
-  color: white;
+  font-size: clamp(16px, 3vw, 22px);
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
   margin-bottom: 6px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  letter-spacing: 3px;
 }
-.venue-location-sub {
+.venue-hero-sub {
   font-family: 'Cinzel', serif;
-  font-size: 13px;
-  color: rgba(255,255,255,0.8);
-  letter-spacing: 4px;
-  margin-bottom: 4px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  font-size: clamp(9px, 1.8vw, 11px);
+  letter-spacing: 3px;
+  color: rgba(212, 168, 67, 0.85);
+  margin-bottom: 6px;
 }
-.venue-gardens {
-  font-style: italic;
-  font-size: 18px;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 28px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+.venue-hero-datetime {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(13px, 2.5vw, 16px);
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+  margin-top: 10px;
 }
 .get-directions-btn {
-  display: inline-block;
-  padding: 14px 40px;
-  border: 1.5px solid white;
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 36px;
+  border: 1.5px solid rgba(212, 168, 67, 0.9);
+  color: rgba(212, 168, 67, 0.95);
   text-decoration: none;
-  border-radius: 50px;
   font-family: 'Cinzel', serif;
-  font-size: 13px;
+  font-size: clamp(10px, 2vw, 13px);
   letter-spacing: 3px;
-  transition: all 0.3s;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(6px);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.35s;
+  background: rgba(0,0,0,0.18);
+  backdrop-filter: blur(8px);
+  text-transform: uppercase;
 }
 .get-directions-btn:hover {
-  background: white;
-  color: black;
-  text-shadow: none;
-}
-.venue-footer {
-  margin-top: 35px;
-  border-top: 1px solid rgba(255,255,255,0.2);
-  padding-top: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  opacity: 0.8;
-}
-.social-icons {
-  display: flex;
-  gap: 18px;
-  font-size: 18px;
-}
-.website-link {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 1px;
-  opacity: 0.7;
+  background: rgba(212, 168, 67, 0.2);
+  border-color: white;
+  color: white;
 }
 
 @media(max-width:600px){
   .ornament-border{padding:36px 18px;}
-  .venue-card { min-height: 520px; }
-  .venue-card-content { min-height: 520px; }
+  .venue-hero { min-height: 420px; }
 }
 </style>
 </head>
@@ -608,35 +606,26 @@ body{
 
   <div class="gold-divider"></div>
 
-  <!-- ═══ VENUE (Social Media Card Style) ═══ -->
+  <!-- ═══ VENUE (Cinematic Hero Style) ═══ -->
   <section class="reveal-section" style="padding:56px 0;">
-    <div class="reveal-child reveal-delay-1 venue-card">
-      <div class="venue-card-bg"></div>
-      <div class="venue-card-overlay"></div>
-      
-      <div class="venue-card-content">
-        <div class="venue-top-text">
-          Every second brings us closer to forever ❤️
-        </div>
-        
-        <div class="venue-bottom-details">
-          <h2>HILTON KINGS RANCH, ALEXANDRIA</h2>
-          <p class="venue-location-sub">ALEXANDRIA, EGYPT</p>
-          <p class="venue-gardens">The Regal Pavilion & Gardens</p>
-          
-          <a class="get-directions-btn" href="https://maps.google.com/?q=Hilton+Kings+Ranch+Alexandria+Egypt" target="_blank" rel="noopener">
-            GET DIRECTIONS
-          </a>
-          
-          <div class="venue-footer">
-            <div class="social-icons">
-              <span>❤️</span>
-              <span>💬</span>
-              <span>📤</span>
-            </div>
-            <div class="website-link">faarrhaa.github.io</div>
-          </div>
-        </div>
+    <div class="reveal-child reveal-delay-1 venue-hero">
+      <div class="venue-hero-bg"></div>
+      <div class="venue-hero-overlay"></div>
+
+      <!-- Floating petals overlay -->
+      <div class="venue-hero-petals" id="venue-petals"></div>
+
+      <div class="venue-hero-content">
+        <div class="venue-hero-tagline">Our Celebration Venue</div>
+        <div class="venue-hero-divider"></div>
+        <div class="venue-hero-name">Hilton Kings Ranch, Alexandria</div>
+        <div class="venue-hero-location">Alexandria, Egypt</div>
+        <div class="venue-hero-sub">The Regal Pavilion &amp; Gardens</div>
+        <div class="venue-hero-divider" style="margin-top:16px;"></div>
+        <div class="venue-hero-datetime">6 / 8 / 2026 &nbsp;·&nbsp; 7:00 PM</div>
+        <a class="get-directions-btn" href="https://maps.google.com/?q=Hilton+Kings+Ranch+Alexandria+Egypt" target="_blank" rel="noopener">
+          🗺 &nbsp;Get Directions
+        </a>
       </div>
     </div>
   </section>
@@ -1024,6 +1013,22 @@ function rsvpYes(){
   spawnConfetti();
 }
 
+function initVenuePetals(){
+  const container = document.getElementById('venue-petals');
+  if(!container) return;
+  const colors = ['#f9d5e5','#fce4ec','#fff0f5','#f8bbd0'];
+  function spawnPetal(){
+    const p = document.createElement('div');
+    const size = Math.random()*8+6;
+    const left = Math.random()*100;
+    const dur = Math.random()*6+7;
+    const delay = Math.random()*4;
+    p.style.cssText = `position:absolute;width:${size}px;height:${size*1.5}px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:${colors[Math.floor(Math.random()*colors.length)]};opacity:0;left:${left}%;top:-20px;animation:petalDrift ${dur}s ${delay}s linear infinite;pointer-events:none;`;
+    container.appendChild(p);
+  }
+  for(let i=0;i<18;i++) spawnPetal();
+}
+
 /* ═══ SCROLL REVEAL & CINEMATIC ENDING ═══ */
 let endingParticlesInterval=null;
 
@@ -1055,6 +1060,7 @@ function initScrollReveal(){
       if(e.isIntersecting){
         e.target.classList.add('revealed');
         if(e.target.id==='cinematic-ending') triggerCinematicEndingParticles();
+        if(e.target.querySelector('.venue-hero')) initVenuePetals();
         o.unobserve(e.target);
       }
     });
