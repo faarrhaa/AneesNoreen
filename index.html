@@ -357,8 +357,8 @@ body{
 </div>
 
 <audio id="bgm" loop preload="auto">
-  <source src="luxury/music.mp3" type="audio/mpeg">
-  <source src="luxury/music.m4a" type="audio/mp4">
+  <source src="luxury.mp3" type="audio/mpeg">
+  <source src="luxury.m4a" type="audio/mp4">
 </audio>
 <button id="music-btn" onclick="toggleMusic()" title="Toggle music">🔇</button>
 
@@ -464,11 +464,11 @@ body{
         <div class="scratch-hint">Day</div>
       </div>
 
-      <!-- MONTH -->
+      <!-- MONTH (Changed to 08) -->
       <div style="text-align:center;">
         <div class="scratch-wrapper" id="scratch-month-wrap">
           <div class="scratch-content">
-            <div style="font-family:'Playfair Display',serif;font-size:clamp(26px, 6vw, 42px);color:var(--dark);line-height:1;font-weight:700;">8</div>
+            <div style="font-family:'Playfair Display',serif;font-size:clamp(26px, 6vw, 42px);color:var(--dark);line-height:1;font-weight:700;">08</div>
           </div>
           <canvas class="scratch-canvas" id="scratch-month"></canvas>
         </div>
@@ -675,10 +675,13 @@ body{
     <p class="reveal-child reveal-delay-1 tagline" style="color:var(--gold);margin-bottom:16px;">We can't wait to see you</p>
     <h2 class="reveal-child reveal-delay-2" style="font-family:'Cinzel',serif;font-size:clamp(22px,4vw,36px);color:var(--dark);margin-bottom:20px;">Join Us</h2>
     <p class="reveal-child reveal-delay-3" style="font-style:italic;font-size:clamp(15px,2.5vw,18px);color:var(--text);max-width:440px;margin:0 auto 40px;line-height:1.8;">Your presence is the greatest gift you could give us on this most beautiful day of our lives.</p>
-    <div class="reveal-child reveal-delay-4" style="display:inline-block;border:1.5px solid var(--gold2);padding:26px 44px;border-radius:4px;background:rgba(253,248,238,.5);">
+    
+    <!-- Adjusted padding and text size to fit inline on mobile -->
+    <div class="reveal-child reveal-delay-4" style="display:inline-block;border:1.5px solid var(--gold2);padding:20px clamp(16px, 4vw, 44px);border-radius:4px;background:rgba(253,248,238,.5);">
       <div style="font-family:'Cinzel',serif;font-size:16px;color:var(--dark);margin-bottom:8px;">Anees &amp; Noureen</div>
-      <div style="font-size:13px;color:var(--gold);letter-spacing:3px;font-family:'Cinzel',serif;">6 · 8 · 2026 &nbsp;·&nbsp; ALEXANDRIA</div>
+      <div style="font-size:clamp(11px, 2.5vw, 13px);color:var(--gold);letter-spacing:clamp(1px, 1vw, 3px);font-family:'Cinzel',serif;white-space:nowrap;">6 · 08 · 2026 &nbsp;·&nbsp; ALEXANDRIA</div>
     </div>
+    
     <div class="reveal-child reveal-delay-4" style="margin-top:44px;font-style:italic;font-size:17px;color:var(--brown);letter-spacing:1px;">✦ &nbsp; With all our love &nbsp; ✦</div>
   </section>
 
