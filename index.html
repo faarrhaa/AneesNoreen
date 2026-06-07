@@ -122,25 +122,6 @@ body{
 #env-wrap{animation:floatEnv 4s ease-in-out infinite;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;max-width:90vw;}
 #env-wrap.closing{animation:envClose .65s cubic-bezier(.4,0,.6,1) forwards!important;}
 
-.env-open-btn{
-  margin-top:32px;
-  padding:14px 32px;
-  border:1.5px solid var(--gold);
-  background:transparent;
-  color:var(--gold);
-  font-family:'Cinzel',serif;
-  font-size:12px;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  cursor:pointer;
-  animation:shimmerGold 2.5s ease-in-out infinite;
-  transition:background .3s, color .3s;
-}
-.env-open-btn:hover{
-  background:var(--gold);
-  color:var(--ivory);
-}
-
 .gold-divider{
   height:1px;
   background:linear-gradient(90deg,transparent,var(--gold2),transparent);
@@ -382,12 +363,11 @@ body{
 <button id="music-btn" onclick="toggleMusic()" title="Toggle music">🔇</button>
 
 <!-- ══ ENVELOPE ══ -->
-<div id="envelope-screen">
+<div id="envelope-screen" onclick="openEnvelope()">
   <div id="stars-env"></div>
   <div id="shooting-stars-container"></div>
   <div id="petals-env"></div>
   <div id="env-wrap">
-    <!-- Made SVG responsive with viewBox and max-width -->
     <svg viewBox="0 0 320 220" style="max-width:90vw; height:auto; filter:drop-shadow(0 8px 32px rgba(184,134,11,.35))">
       <rect x="10" y="60" width="300" height="150" rx="6" fill="#fdf8ee" stroke="#b8860b" stroke-width="1.5"/>
       <rect x="18" y="68" width="284" height="134" rx="4" fill="none" stroke="#b8860b" stroke-width=".5" opacity=".5"/>
@@ -406,11 +386,7 @@ body{
 
     <div style="margin-top:18px;text-align:center;">
       <div style="font-family:'Cinzel',serif;font-size:clamp(18px, 4vw, 20px);color:var(--dark);letter-spacing:6px;">Anees &amp; Noureen</div>
-      <div style="font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;margin-top:5px;">A Wedding Invitation</div>
     </div>
-    
-    <!-- Distinct Click Button -->
-    <button class="env-open-btn" onclick="openEnvelope()">✦ Click to Open ✦</button>
   </div>
 </div>
 
