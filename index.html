@@ -119,8 +119,27 @@ body{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   cursor:pointer;position:relative;overflow:hidden;padding:40px 20px;
 }
-#env-wrap{animation:floatEnv 4s ease-in-out infinite;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
+#env-wrap{animation:floatEnv 4s ease-in-out infinite;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;max-width:90vw;}
 #env-wrap.closing{animation:envClose .65s cubic-bezier(.4,0,.6,1) forwards!important;}
+
+.env-open-btn{
+  margin-top:32px;
+  padding:14px 32px;
+  border:1.5px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  font-family:'Cinzel',serif;
+  font-size:12px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  cursor:pointer;
+  animation:shimmerGold 2.5s ease-in-out infinite;
+  transition:background .3s, color .3s;
+}
+.env-open-btn:hover{
+  background:var(--gold);
+  color:var(--ivory);
+}
 
 .gold-divider{
   height:1px;
@@ -140,8 +159,8 @@ body{
 
 /* ── SHARED CIRCLES ── */
 .cbox, .scratch-wrapper {
-  width: clamp(76px, 20vw, 150px);
-  height: clamp(76px, 20vw, 150px);
+  width: clamp(76px, 22vw, 150px);
+  height: clamp(76px, 22vw, 150px);
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -363,12 +382,13 @@ body{
 <button id="music-btn" onclick="toggleMusic()" title="Toggle music">🔇</button>
 
 <!-- ══ ENVELOPE ══ -->
-<div id="envelope-screen" onclick="openEnvelope()">
+<div id="envelope-screen">
   <div id="stars-env"></div>
   <div id="shooting-stars-container"></div>
   <div id="petals-env"></div>
   <div id="env-wrap">
-    <svg width="320" height="220" viewBox="0 0 320 220" style="filter:drop-shadow(0 8px 32px rgba(184,134,11,.35))">
+    <!-- Made SVG responsive with viewBox and max-width -->
+    <svg viewBox="0 0 320 220" style="max-width:90vw; height:auto; filter:drop-shadow(0 8px 32px rgba(184,134,11,.35))">
       <rect x="10" y="60" width="300" height="150" rx="6" fill="#fdf8ee" stroke="#b8860b" stroke-width="1.5"/>
       <rect x="18" y="68" width="284" height="134" rx="4" fill="none" stroke="#b8860b" stroke-width=".5" opacity=".5"/>
       <path d="M10 60 L160 148 L310 60 Z" fill="#f5ead0" stroke="#b8860b" stroke-width="1"/>
@@ -385,10 +405,12 @@ body{
     </svg>
 
     <div style="margin-top:18px;text-align:center;">
-      <div style="font-family:'Cinzel',serif;font-size:20px;color:var(--dark);letter-spacing:6px;">Anees &amp; Noureen</div>
+      <div style="font-family:'Cinzel',serif;font-size:clamp(18px, 4vw, 20px);color:var(--dark);letter-spacing:6px;">Anees &amp; Noureen</div>
       <div style="font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;margin-top:5px;">A Wedding Invitation</div>
     </div>
-    <div style="margin-top:38px;color:var(--gold);font-family:'Cinzel',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;animation:shimmerGold 2.5s ease-in-out infinite;">✦ Click to open your invitation ✦</div>
+    
+    <!-- Distinct Click Button -->
+    <button class="env-open-btn" onclick="openEnvelope()">✦ Click to Open ✦</button>
   </div>
 </div>
 
@@ -453,14 +475,13 @@ body{
   <section class="reveal-section" style="text-align:center;padding:40px 0;">
     <p class="reveal-child reveal-delay-1 tagline" style="color:var(--gold);margin-bottom:6px;">Scratch to reveal the date</p>
 
-    <div class="reveal-child reveal-delay-2" style="display:flex;justify-content:center;gap:clamp(16px, 4vw, 24px);flex-wrap:wrap;margin:20px 0;">
+    <div class="reveal-child reveal-delay-2" style="display:flex;justify-content:center;gap:clamp(16px, 5vw, 24px);flex-wrap:wrap;margin:20px 0;">
 
       <!-- DAY -->
       <div style="text-align:center;">
         <div class="scratch-wrapper" id="scratch-day-wrap">
           <div class="scratch-content">
-            <div style="font-family:'Cinzel',serif;font-size:clamp(8px, 2vw, 11px);color:var(--gold);letter-spacing:2px;margin-bottom:4px;">FRIDAY</div>
-            <div style="font-family:'Playfair Display',serif;font-size:clamp(22px, 5vw, 38px);color:var(--dark);line-height:1;font-weight:700;">06</div>
+            <div style="font-family:'Playfair Display',serif;font-size:clamp(26px, 6vw, 42px);color:var(--dark);line-height:1;font-weight:700;">06</div>
           </div>
           <canvas class="scratch-canvas" id="scratch-day"></canvas>
         </div>
@@ -471,8 +492,7 @@ body{
       <div style="text-align:center;">
         <div class="scratch-wrapper" id="scratch-month-wrap">
           <div class="scratch-content">
-            <div style="font-family:'Cinzel',serif;font-size:clamp(8px, 2vw, 11px);color:var(--gold);letter-spacing:2px;margin-bottom:4px;">Month</div>
-            <div style="font-family:'Cinzel',serif;font-size:clamp(11px, 2.5vw, 16px);color:var(--dark);line-height:1;letter-spacing:1px;font-weight:600;">AUGUST</div>
+            <div style="font-family:'Playfair Display',serif;font-size:clamp(26px, 6vw, 42px);color:var(--dark);line-height:1;font-weight:700;">8</div>
           </div>
           <canvas class="scratch-canvas" id="scratch-month"></canvas>
         </div>
@@ -483,8 +503,7 @@ body{
       <div style="text-align:center;">
         <div class="scratch-wrapper" id="scratch-year-wrap">
           <div class="scratch-content">
-            <div style="font-family:'Cinzel',serif;font-size:clamp(8px, 2vw, 11px);color:var(--gold);letter-spacing:2px;margin-bottom:4px;">Year</div>
-            <div style="font-family:'Playfair Display',serif;font-size:clamp(16px, 4vw, 28px);color:var(--dark);line-height:1;font-weight:700;">2026</div>
+            <div style="font-family:'Playfair Display',serif;font-size:clamp(22px, 5vw, 36px);color:var(--dark);line-height:1;font-weight:700;">2026</div>
           </div>
           <canvas class="scratch-canvas" id="scratch-year"></canvas>
         </div>
@@ -682,7 +701,7 @@ body{
     <p class="reveal-child reveal-delay-3" style="font-style:italic;font-size:clamp(15px,2.5vw,18px);color:var(--text);max-width:440px;margin:0 auto 40px;line-height:1.8;">Your presence is the greatest gift you could give us on this most beautiful day of our lives.</p>
     <div class="reveal-child reveal-delay-4" style="display:inline-block;border:1.5px solid var(--gold2);padding:26px 44px;border-radius:4px;background:rgba(253,248,238,.5);">
       <div style="font-family:'Cinzel',serif;font-size:16px;color:var(--dark);margin-bottom:8px;">Anees &amp; Noureen</div>
-      <div style="font-size:13px;color:var(--gold);letter-spacing:3px;font-family:'Cinzel',serif;">6 · AUGUST · 2026 &nbsp;·&nbsp; ALEXANDRIA</div>
+      <div style="font-size:13px;color:var(--gold);letter-spacing:3px;font-family:'Cinzel',serif;">6 · 8 · 2026 &nbsp;·&nbsp; ALEXANDRIA</div>
     </div>
     <div class="reveal-child reveal-delay-4" style="margin-top:44px;font-style:italic;font-size:17px;color:var(--brown);letter-spacing:1px;">✦ &nbsp; With all our love &nbsp; ✦</div>
   </section>
