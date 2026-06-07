@@ -356,9 +356,10 @@ body{
   </div>
 </div>
 
+<!-- Swapped sources: m4a first to prevent 404 blocking on mobile -->
 <audio id="bgm" loop preload="auto">
-  <source src="luxury.mp3" type="audio/mpeg">
   <source src="luxury.m4a" type="audio/mp4">
+  <source src="luxury.mp3" type="audio/mpeg">
 </audio>
 <button id="music-btn" onclick="toggleMusic()" title="Toggle music">🔇</button>
 
@@ -464,7 +465,7 @@ body{
         <div class="scratch-hint">Day</div>
       </div>
 
-      <!-- MONTH (Changed to 08) -->
+      <!-- MONTH -->
       <div style="text-align:center;">
         <div class="scratch-wrapper" id="scratch-month-wrap">
           <div class="scratch-content">
@@ -676,7 +677,6 @@ body{
     <h2 class="reveal-child reveal-delay-2" style="font-family:'Cinzel',serif;font-size:clamp(22px,4vw,36px);color:var(--dark);margin-bottom:20px;">Join Us</h2>
     <p class="reveal-child reveal-delay-3" style="font-style:italic;font-size:clamp(15px,2.5vw,18px);color:var(--text);max-width:440px;margin:0 auto 40px;line-height:1.8;">Your presence is the greatest gift you could give us on this most beautiful day of our lives.</p>
     
-    <!-- Adjusted padding and text size to fit inline on mobile -->
     <div class="reveal-child reveal-delay-4" style="display:inline-block;border:1.5px solid var(--gold2);padding:20px clamp(16px, 4vw, 44px);border-radius:4px;background:rgba(253,248,238,.5);">
       <div style="font-family:'Cinzel',serif;font-size:16px;color:var(--dark);margin-bottom:8px;">Anees &amp; Noureen</div>
       <div style="font-size:clamp(11px, 2.5vw, 13px);color:var(--gold);letter-spacing:clamp(1px, 1vw, 3px);font-family:'Cinzel',serif;white-space:nowrap;">6 · 08 · 2026 &nbsp;·&nbsp; ALEXANDRIA</div>
@@ -747,16 +747,28 @@ window.addEventListener('DOMContentLoaded',()=>{
 /* ═══ MUSIC ═══ */
 let musicStarted=false, muted=false;
 const bgm=document.getElementById('bgm');
-bgm.volume=0;
 
 function fadeInMusic(){
   const btn=document.getElementById('music-btn');
   btn.style.display='flex';
   
-  if(musicStarted) return;
-  musicStarted=true;
+  if(musicStarted) {
+    // Already playing, just handle the volume fade
+    let v=0;
+    const t=setInterval(()=>{
+      v=Math.min(v+.02,.6);
+      bgm.volume=v;
+      if(v>=.6) clearInterval(t);
+    },120);
+    btn.textContent='🔊';
+    muted=false;
+    return;
+  }
   
+  // Fallback if called directly without envelope interaction
+  bgm.volume = 0;
   bgm.play().then(()=>{
+    musicStarted=true;
     let v=0;
     const t=setInterval(()=>{
       v=Math.min(v+.02,.6);
@@ -774,10 +786,10 @@ function fadeInMusic(){
 
 function toggleMusic(){
   const btn=document.getElementById('music-btn');
-  if(!musicStarted){
+  if(!musicStarted || bgm.paused){
+    bgm.volume = 0.6;
     bgm.play().then(()=>{
       musicStarted=true;
-      bgm.volume=.6;
       btn.textContent='🔊';
       muted=false;
     }).catch(()=>{});
@@ -826,12 +838,29 @@ function openEnvelope(){
   wrap.style.animation='none';wrap.offsetHeight;
   wrap.classList.add('closing');
   spawnConfetti();
+  
+  // IMPORTANT FOR MOBILE: Play audio synchronously during the click event
+  if (bgm.paused) {
+    bgm.volume = 0; // Start silent to allow the play command without blaring audio
+    bgm.play().then(() => {
+      musicStarted = true;
+      muted = false;
+      fadeInMusic(); // This will handle the volume fade up
+    }).catch(() => {
+      // Autoplay blocked by mobile browser. Show button so user can manually start.
+      const btn = document.getElementById('music-btn');
+      btn.style.display = 'flex';
+      btn.textContent = '🔇';
+      muted = true;
+      musicStarted = false;
+    });
+  }
+
   setTimeout(()=>{
     document.getElementById('envelope-screen').style.display='none';
     document.getElementById('invitation').style.display='block';
     initScratchCards();
     startCountdown();
-    fadeInMusic();
     renderWishes();
     initScrollReveal();
     initCinematicEnding();
