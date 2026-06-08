@@ -6,7 +6,7 @@
 <title>Noreen & Anees · Wedding Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&family=Cormorant+Upright:wght@300;400;500&display=swap" rel="stylesheet"/>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -85,6 +85,8 @@ body{
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity:0.025;
 }
+
+
 
 #loading-screen{
   position:fixed;inset:0;background:linear-gradient(145deg,#3d0a18,#5c1128,#4a0e1e);display:flex;justify-content:center;align-items:center;z-index:9999;
@@ -218,9 +220,9 @@ body{
 
 .letter-container{max-width:480px;margin:32px auto;position:relative;perspective:1000px;}
 .letter-pocket{
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  border:1px solid var(--gold);border-radius:6px;height:140px;
-  position:relative;box-shadow:0 6px 24px rgba(184,134,11,.3);z-index:2;overflow:hidden;
+  background:linear-gradient(135deg,#f5ead0,#fdf8ee);
+  border:1.5px solid var(--gold2);border-radius:6px;height:140px;
+  position:relative;box-shadow:0 6px 24px rgba(184,134,11,.25);z-index:2;overflow:hidden;
   display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;
 }
 .letter-seal{
@@ -443,6 +445,8 @@ body{
 <div id="page-overlay"></div>
 <div class="grain"></div>
 
+
+
 <div id="loading-screen">
   <div style="text-align:center;">
     <div class="loading-ring"></div>
@@ -500,14 +504,14 @@ body{
 
     <div style="position:relative;display:inline-block;">
       <h1 class="fade-section name-shimmer" id="name-noreen"
-        style="font-family:'Playfair Display',serif;font-size:clamp(52px,12vw,90px);color:var(--dark);line-height:1;animation-delay:.1s;cursor:default;font-style:italic;text-shadow:0 2px 8px rgba(184,134,11,.15);">
+        style="font-family:'Pinyon Script',cursive;font-size:clamp(72px,16vw,130px);color:var(--dark);line-height:1;animation-delay:.1s;cursor:default;font-style:normal;text-shadow:0 2px 12px rgba(184,134,11,.25);">
         Noreen
       </h1>
     </div>
-    <div class="fade-section" style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(30px,6vw,48px);color:var(--gold);animation-delay:.18s;">&amp;</div>
+    <div class="fade-section" style="font-family:'Pinyon Script',cursive;font-style:normal;font-size:clamp(42px,9vw,70px);color:var(--gold);animation-delay:.18s;line-height:1;">&amp;</div>
     <div style="position:relative;display:inline-block;">
       <h1 class="fade-section name-shimmer" id="name-anees"
-        style="font-family:'Playfair Display',serif;font-size:clamp(52px,12vw,90px);color:var(--dark);line-height:1;animation-delay:.26s;cursor:default;font-style:italic;text-shadow:0 2px 8px rgba(184,134,11,.15);">
+        style="font-family:'Pinyon Script',cursive;font-size:clamp(72px,16vw,130px);color:var(--dark);line-height:1;animation-delay:.26s;cursor:default;font-style:normal;text-shadow:0 2px 12px rgba(184,134,11,.25);">
         Anees
       </h1>
     </div>
@@ -663,7 +667,7 @@ body{
       </div>
       <div class="letter-pocket" onclick="toggleLoveLetter()">
         <div class="letter-seal">💌</div>
-        <div style="position:absolute;bottom:14px;color:var(--ivory);font-size:10px;letter-spacing:3px;font-family:'Cinzel',serif;text-transform:uppercase;">Click to Read</div>
+        <div style="position:absolute;bottom:14px;color:#b8860b;font-size:10px;letter-spacing:3px;font-family:'Cinzel',serif;text-transform:uppercase;">Click to Read</div>
       </div>
     </div>
   </section>
