@@ -529,7 +529,7 @@ body{
     </p>
 
     <p class="fade-section" style="font-family:'Cinzel',serif;font-size:clamp(13px,3vw,17px);color:var(--gold);letter-spacing:clamp(2px,1vw,4px);margin:14px 0 10px;animation-delay:.46s;font-weight:600;">
-      WHERE FOREVER BEGINS
+      OUR WEDDING
     </p>
 
     <p class="fade-section" style="font-size:clamp(15px,2.5vw,18px);color:var(--text);animation-delay:.5s;">
@@ -634,8 +634,7 @@ body{
       <div class="venue-hero-bg"></div>
       <div class="venue-hero-overlay"></div>
 
-      <!-- Floating petals overlay -->
-      <div class="venue-hero-petals" id="venue-petals"></div>
+      <!-- Floating petals overlay removed -->
 
       <div class="venue-hero-content">
         <div class="venue-hero-tagline">Our Celebration Venue</div>
@@ -706,7 +705,6 @@ body{
       <button class="rsvp-btn" onclick="rsvpYes()">I'll be there 💍</button>
     </div>
     <div id="rsvp-confirm" style="display:none;margin-top:28px;">
-      <div style="font-size:44px;margin-bottom:14px;">🎉</div>
       <p style="font-family:'Cinzel',serif;font-size:20px;color:var(--dark);margin-bottom:8px;">We're so happy!</p>
       <p style="font-style:italic;font-size:17px;color:var(--brown);">We can't wait to celebrate with you on August 6th! 🤍</p>
     </div>
@@ -877,7 +875,6 @@ function openEnvelope(){
   const wrap=document.getElementById('env-wrap');
   wrap.style.animation='none';wrap.offsetHeight;
   wrap.classList.add('closing');
-  spawnConfetti();
   
   if (bgm.paused) {
     bgm.volume = 0;
@@ -1057,7 +1054,6 @@ async function postWish() {
 function rsvpYes(){
   const c=document.getElementById('rsvp-confirm');
   c.style.display='block';c.style.animation='rsvpPop .5s ease both';
-  spawnConfetti();
 }
 
 function initVenuePetals(){
@@ -1107,7 +1103,6 @@ function initScrollReveal(){
       if(e.isIntersecting){
         e.target.classList.add('revealed');
         if(e.target.id==='cinematic-ending') triggerCinematicEndingParticles();
-        if(e.target.querySelector('.venue-hero')) initVenuePetals();
         o.unobserve(e.target);
       }
     });
